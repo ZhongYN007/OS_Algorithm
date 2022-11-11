@@ -1,0 +1,3 @@
+/Users/zhongyunong/Documents/University/grade three/Operating_System/memory_management/cmake-build-debug/CMakeFiles/memory_management.dir
+/Users/zhongyunong/Documents/University/grade three/Operating_System/memory_management/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/zhongyunong/Documents/University/grade three/Operating_System/memory_management/cmake-build-debug/CMakeFiles/rebuild_cache.dir
