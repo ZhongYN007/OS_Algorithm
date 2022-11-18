@@ -1,3 +1,5 @@
 # ninja log v5
 0	269	1668156759487650435	CMakeFiles/memory_management.dir/main.cpp.o	6f34cc53e0b8657e
 270	304	1668156759523421268	memory_management	f2d3657c63a1e3d1
+4	431	1668781795065508476	CMakeFiles/memory_management.dir/main.cpp.o	6f34cc53e0b8657e
+3	436	1668781795071660786	CMakeFiles/memory_management.dir/ultra.cpp.o	5ea9883cf37486ec

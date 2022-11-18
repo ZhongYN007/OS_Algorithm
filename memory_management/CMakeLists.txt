@@ -3,4 +3,4 @@ project(memory_management)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(memory_management main.cpp)
+add_executable(memory_management main.cpp ultra.cpp)
