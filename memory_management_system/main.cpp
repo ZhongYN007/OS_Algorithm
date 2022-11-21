@@ -59,7 +59,32 @@ bool best_allocation(int *pf,int *pb,work B,area *free,area *busy,int limit);
 bool worst_allocation(int *pf,int *pb,work B,area *free,area *busy,int limit);
 bool recycle(int *pf,int *pb,int id,area *free,area *busy);
 void sort(int p, area *queue);
-
+void sort2( int p, area* queue)
+{
+    for(int i  = 0 ; i < p ; i++)
+        for(int j = i + 1 ; j<p  ; j++)
+        {
+            if(queue[i].get_size()>queue[j].get_size())
+            {
+                area t = queue[j];
+                queue[j] = queue[i];
+                queue[i] = t;
+            }
+        }
+}
+void sort3( int p, area* queue)
+{
+    for(int i  = 0 ; i < p ; i++)
+        for(int j = i + 1 ; j<p  ; j++)
+        {
+            if(queue[i].get_size()<queue[j].get_size())
+            {
+                area t = queue[j];
+                queue[j] = queue[i];
+                queue[i] = t;
+            }
+        }
+}
 int main()
 {
     area *free  = new area[MAX_ADDRESS];
@@ -125,6 +150,7 @@ int main()
                     case 1:
                     {
                         bool result = first_allocation(&p_free,&p_busy,now,free,busy,limit);
+                        sort(p_free,free);
                         if(result) {
                             cout << "分配成功!"<<endl;
                             break;
@@ -136,6 +162,7 @@ int main()
                     }//case1
                     case 2:
                     {
+                        sort2(p_free,free);
                         bool result = best_allocation(&p_free,&p_busy,now,free,busy,limit);
                         if(result) {
                             cout << "分配成功!"<<endl;
@@ -148,6 +175,7 @@ int main()
                     }//case2
                     case 3:
                     {
+                        sort3(p_free,free);
                         bool result = worst_allocation(&p_free,&p_busy,now,free,busy,limit);
                         if(result) {
                             cout << "分配成功!"<<endl;
@@ -184,7 +212,7 @@ int main()
             case 3:
             {
                 sort(p_busy,busy);
-                sort(p_free,free);
+
                 cout<<"已分配区表:"<<endl;
                 cout<<"起始地址"<<'\t'<<"长度"<<'\t'<<"标志"<<endl;
                 for(int i = 0;i<p_busy;i++)
@@ -217,6 +245,7 @@ void sort( int p, area* queue)
             }
         }
 }
+
 
 bool first_allocation(int *pf,int *pb,work B, area *free, area *busy,int limit)
 {
@@ -253,7 +282,7 @@ bool first_allocation(int *pf,int *pb,work B, area *free, area *busy,int limit)
 }
 bool best_allocation(int *pf,int *pb,work B,area *free,area *busy,int limit)
 {
-    sort(*pf,free);
+    sort2(*pf,free);
     sort(*pb,busy);
     int index = 0;
     int sign = 65535;
@@ -295,7 +324,7 @@ bool best_allocation(int *pf,int *pb,work B,area *free,area *busy,int limit)
 
 bool worst_allocation(int *pf,int *pb,work B,area *free,area *busy,int limit)
 {
-    sort(*pf,free);
+    sort3(*pf,free);
     sort(*pb,busy);
     int index = -1;
     int sign  = -1;
@@ -374,10 +403,10 @@ bool recycle(int *pf,int *pb,int id,area *free,area *busy)
             free[i].set_size(free[i].get_size()+a.get_size());
             return true;
         }
-        else if(free[i+1].get_first_ad() == (a.compute_last_ad()+1))
+        else if(free[i].get_first_ad() == (a.compute_last_ad()+1))
         {
-            free[i+1].set_first_ad(a.get_first_ad());
-            free[i+1].set_size(free[i+1].get_size()+a.get_size());
+            free[i].set_first_ad(a.get_first_ad());
+            free[i].set_size(free[i].get_size()+a.get_size());
             return true;
         }
 
