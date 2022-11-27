@@ -1,0 +1,3 @@
+/Users/zhongyunong/Documents/University/grade three/Operating_System/FIFO_LRU/cmake-build-debug/CMakeFiles/FIFO_LRU.dir
+/Users/zhongyunong/Documents/University/grade three/Operating_System/FIFO_LRU/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/zhongyunong/Documents/University/grade three/Operating_System/FIFO_LRU/cmake-build-debug/CMakeFiles/rebuild_cache.dir
